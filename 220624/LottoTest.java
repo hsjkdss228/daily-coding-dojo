@@ -19,6 +19,11 @@ class LottoTest {
         new int[]{45, 4, 35, 20, 3, 9},
         test.excludeZero(new int[]{45, 4, 35, 20, 3, 9})
     );
+
+    assertArrayEquals(
+        new int[]{1, 2, 3, 4, 5, 6},
+        test.excludeZero(new int[]{1, 2, 3, 4, 5, 6})
+    );
   }
 
   @Test
@@ -57,6 +62,14 @@ class LottoTest {
             new int[]{20, 9, 3, 45, 4, 35}
         )
     );
+
+    assertEquals(
+        0,
+        test.countAnswerExceptZero(
+            new int[]{1, 2, 3, 4, 5, 6},
+            new int[]{7, 8, 9, 10, 11, 12}
+        )
+    );
   }
 
   @Test
@@ -75,6 +88,7 @@ class LottoTest {
     assertEquals(3, test.setHighestRanking(2, 2));
     assertEquals(1, test.setHighestRanking(0, 6));
     assertEquals(1, test.setHighestRanking(6, 0));
+    assertEquals(6, test.setHighestRanking(0, 0));
   }
 
   @Test
@@ -94,6 +108,14 @@ class LottoTest {
         test.solution(
             new int[]{0, 0, 0, 0, 0, 1},
             new int[]{2, 3, 4, 5, 6, 7}
+        )
+    );
+
+    assertArrayEquals(
+        new int[]{6, 6},
+        test.solution(
+            new int[]{1, 2, 3, 4, 5, 6},
+            new int[]{7, 8, 9, 10, 11, 12}
         )
     );
   }

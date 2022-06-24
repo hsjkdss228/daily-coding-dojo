@@ -10,6 +10,10 @@
 // 5. 최대 순위는
 //   >> 정답 개수가 6개이면: 1
 //   >> 정답 개수가 5개 이하이면: 6 - (정답 개수 + 0 개수) + 1
+//
+// 14번 Test Case가 틀려가지고 문제의 조건을 다시 한 번 확인해봤다.
+// lottos에 0이 없고 아예 winNumbers랑 다른 경우도 있을 수 있음
+// 5번에서 그 경우에 대한 예외처리를 추가해줘야 함
 
 public class Lotto {
   public int[] solution(int[] lottos, int[] winNumbers) {
@@ -94,10 +98,12 @@ public class Lotto {
   }
 
   public int setHighestRanking(int winCount, int zeroCount) {
-    //   >> 정답 개수가 6개이면: 1
-    //   >> 정답 개수가 5개 이하이면: 6 - (정답 개수 + 0 개수) + 1
     if (winCount == 6) {
       return 1;
+    }
+
+    if (winCount == 0 && zeroCount == 0) {
+      return 6;
     }
 
     if (winCount <= 5) {
