@@ -69,7 +69,7 @@ public class Dart {
     }
 
     return sets.stream()
-        .mapToInt(resultOfSet -> resultOfSet)
+        .mapToInt(set -> set)
         .sum();
   }
 }
