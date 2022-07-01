@@ -37,7 +37,8 @@ public class Dart {
         bonusIsChecked = true;
       }
 
-      //점수, 보너스가 모두 체크되었으면 계산해서 결과에 합산
+      //점수, 보너스가 모두 체크되었으면 보너스와 점수만 고려해서
+      //계산한 결과를 세트 하나로 해서 결과 배열 값에 추가
       if (scoreIsChecked && bonusIsChecked) {
         sets.add((int) Math.pow(score, bonus));
 
@@ -45,7 +46,7 @@ public class Dart {
         bonusIsChecked = false;
       }
 
-      //옵션이 있으면 결과 배열 값에 옵션을 반영
+      //옵션이 있으면 결과 배열 값들에 옵션을 반영
       int lastIndexOfSets = sets.size() - 1;
 
       if (i + 1 < dartResult.length()) {
