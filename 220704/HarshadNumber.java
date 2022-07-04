@@ -1,7 +1,7 @@
 public class HarshadNumber {
   public boolean solution(int x) {
     int divisor = makeDivisor(x);
-    divisor = makeDivisorInADifferentWay(x);
+    //int divisor = makeDivisorInADifferentWay(x);
 
     return (x % divisor == 0);
   }
@@ -19,9 +19,9 @@ public class HarshadNumber {
   }
 
   public int makeDivisorInADifferentWay(int x) {
-    return Integer.toString(x)
-        .chars()
-        .map(digit -> digit - '0')
-        .sum();
+    return Integer.toString(x)      //135 >> "135"
+        .chars()                    //'1' '3' '5'
+        .map(digit -> digit - '0')  //'뭐시기' << 1, '거시기' << 3, '저시기' << 5
+        .sum();                     //1 + 3 + 5
   }
 }
