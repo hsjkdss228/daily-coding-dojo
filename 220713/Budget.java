@@ -1,12 +1,12 @@
 import java.util.Arrays;
 
 public class Budget {
-  public int solution(int[] appliedAmount, int budget) {
-    int[] sortedAppliedAmount = Arrays.stream(appliedAmount)
+  public int solution(int[] appliedAmounts, int budget) {
+    int[] sortedAppliedAmounts = Arrays.stream(appliedAmounts)
         .sorted()
         .toArray();
 
-    /*for (int amount : sortedAppliedAmount) {
+    /*for (int amount : sortedAppliedAmounts) {
       System.out.print(amount + " ");
     }
     System.out.println();*/
@@ -14,7 +14,7 @@ public class Budget {
     int sumOfAmount = 0;
     int result = 0;
 
-    for (int amount : sortedAppliedAmount) {
+    for (int amount : sortedAppliedAmounts) {
       sumOfAmount += amount;
       result += 1;
 
