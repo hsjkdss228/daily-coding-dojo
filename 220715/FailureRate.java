@@ -17,19 +17,20 @@
 //   (실패율이 같은 스테이지가 있다면 작은 번호의 스테이지가 먼저 오도록 함)
 
 public class FailureRate {
-  public void solution(int totalStages, int[] stagesEachUserIsChallenging) {
-
+  public int[] solution(int totalStages, int[] stagesEachUserChallenging) {
+    int[] stageIndices = new int[totalStages];
+    double[] failureRateOfStages = new double[totalStages];
 
     for (int stageIndex = 1; stageIndex <= totalStages; stageIndex += 1) {
       double numberOfUsersReachedThatStage = 0;
       double numberOfUsersChallengingThatStage = 0;
 
-      for (int stageEachUserIsChallenging : stagesEachUserIsChallenging) {
-        if (stageEachUserIsChallenging >= stageIndex) {
+      for (int stageEachUserChallenging : stagesEachUserChallenging) {
+        if (stageEachUserChallenging >= stageIndex) {
           numberOfUsersReachedThatStage += 1;
         }
 
-        if (stageEachUserIsChallenging == stageIndex) {
+        if (stageEachUserChallenging == stageIndex) {
           numberOfUsersChallengingThatStage += 1;
         }
       }
@@ -39,12 +40,31 @@ public class FailureRate {
       if (numberOfUsersReachedThatStage > 0) {
         failureRate
             = numberOfUsersChallengingThatStage / numberOfUsersReachedThatStage;
+      }
 
-        System.out.println("현재 스테이지: " + stageIndex
-            + ", 스테이지 실패율: " + failureRate);
+      /*System.out.println("현재 스테이지: " + stageIndex
+          + ", 스테이지 실패율: " + failureRate);*/
+
+      stageIndices[stageIndex - 1] = stageIndex;
+      failureRateOfStages[stageIndex - 1] = failureRate;
+    }
+
+    //정렬
+    for (int i = 0; i < totalStages; i += 1) {
+      for (int j = 0; j < totalStages - i; j += 1) {
+        if (j + 1 != totalStages
+            && failureRateOfStages[j] < failureRateOfStages[j + 1]) {
+          double tempForFailureRate = failureRateOfStages[j + 1];
+          failureRateOfStages[j + 1] = failureRateOfStages[j];
+          failureRateOfStages[j] = tempForFailureRate;
+
+          int tempForStageIndex = stageIndices[j + 1];
+          stageIndices[j + 1] = stageIndices[j];
+          stageIndices[j] = tempForStageIndex;
+        }
       }
     }
 
-
+    return stageIndices;
   }
 }
