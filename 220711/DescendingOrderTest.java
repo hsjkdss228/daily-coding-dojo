@@ -26,8 +26,10 @@ class DescendingOrderTest {
     DescendingOrder descendingOrder = new DescendingOrder();
 
     assertEquals("cba", descendingOrder.solution("abc"));
-    assertEquals("whI", descendingOrder.solution("hIw"));
+    assertEquals("whaaI", descendingOrder.solution("haIaw"));
     assertEquals("trfaTSRCA", descendingOrder.solution("StaRCrAfT"));
-    assertEquals("tfaaaaTS", descendingOrder.solution("StaaaafT"));
+    assertEquals("tfaaaaTS", descendingOrder.solution("SatafTaa"));
+
+    assertEquals("bbbbbbbb", descendingOrder.solution("bbbbbbbb"));
   }
 }
