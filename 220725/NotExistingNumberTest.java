@@ -9,5 +9,8 @@ class NotExistingNumberTest {
 
     assertEquals(14, test.solution(new int[]{1, 2, 3, 4, 6, 7, 8, 0}));
     assertEquals(6, test.solution(new int[]{5, 8, 4, 0, 6, 7, 9}));
+
+    assertEquals(14, test.solution2(new int[]{1, 2, 3, 4, 6, 7, 8, 0}));
+    assertEquals(6, test.solution2(new int[]{5, 8, 4, 0, 6, 7, 9}));
   }
 }
