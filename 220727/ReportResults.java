@@ -104,10 +104,6 @@ public class ReportResults {
       }
     }
 
-    for (int i = 0; i < mailCountsToBeReplied.length; i += 1) {
-      System.out.println(users[i] + ": " + mailCountsToBeReplied[i]);
-    }
-
     return mailCountsToBeReplied;
   }
 }
