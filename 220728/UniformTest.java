@@ -61,5 +61,77 @@ class UniformTest {
             new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
         )
     );
+
+    assertEquals(
+        9,
+        test.solution(
+            10,
+            new int[]{1, 2, 3, 4, 5, 6},
+            new int[]{1, 2, 3, 4, 6, 7}
+        )
+    );
+
+    assertEquals(
+        6,
+        test.solution(
+            7,
+            new int[]{2, 3, 5},
+            new int[]{3, 4}
+        )
+    );
+
+    assertEquals(
+        6,
+        test.solution(
+            7,
+            new int[]{2, 3, 5},
+            new int[]{3, 4}
+        )
+    );
+
+    assertEquals(
+        1,
+        test.solution(
+            6,
+            new int[]{1, 2, 3, 4, 5, 6},
+            new int[]{1}
+        )
+    );
+
+    assertEquals(
+        6,
+        test.solution(
+            6,
+            new int[]{1},
+            new int[]{1, 2, 3, 4, 5, 6}
+        )
+    );
+
+    assertEquals(
+        1,
+        test.solution(
+            2,
+            new int[]{1, 2},
+            new int[]{1}
+        )
+    );
+
+    assertEquals(
+        3,
+        test.solution(
+            7,
+            new int[]{1, 2, 3, 5, 6, 7},
+            new int[]{3, 4, 5}
+        )
+    );
+
+    assertEquals(
+        3,
+        test.solution(
+            7,
+            new int[]{1, 2, 3, 5, 6, 7},
+            new int[]{3, 4, 5}
+        )
+    );
   }
 }
