@@ -91,4 +91,21 @@ class SecretMapTest {
 
     assertArrayEquals(expected, testApplication.solution(5, array1, array2));
   }
+
+  @Test
+  void solution2Test() {
+    SecretMap testApplication = new SecretMap();
+
+    int[] array1 = new int[]{9, 20, 28, 18, 11};
+    int[] array2 = new int[]{30, 1, 21, 17, 28};
+    String[] expected = new String[]{
+        "#####",
+        "# # #",
+        "### #",
+        "#  ##",
+        "#####"
+    };
+
+    assertArrayEquals(expected, testApplication.solution2(5, array1, array2));
+  }
 }

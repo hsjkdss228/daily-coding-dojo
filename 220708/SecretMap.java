@@ -1,3 +1,5 @@
+public class SecretMap {
+  public String[] solution(int length, int[] array1, int[] array2) {
 // 두 int[] array의 각 요소를 이진수 문자열로 변환한 String[] array를 생성한다.
 // ex) {3, 6, 5} >> {"011", "110", "101"},
 //     {1, 7, 4} >> {"001", "111", "100"},
@@ -10,8 +12,6 @@
 //               [2]에 들어있는 "101", "100"의 비교 결과는 "# #" >> 정답 array의 [2]에 입력
 // >> 최종 정답: {" ##", "###", "# #"}
 
-public class SecretMap {
-  public String[] solution(int length, int[] array1, int[] array2) {
     String[] binaryArray1 = new String[length];
     String[] binaryArray2 = new String[length];
 
@@ -62,5 +62,38 @@ public class SecretMap {
     }
 
     return secretMap;
+  }
+
+  public String[] solution2(int length, int[] array1, int[] array2) {
+    String[] binaryArray1 = new String[length];
+    String[] binaryArray2 = new String[length];
+
+    for (int i = 0; i < length; i += 1) {
+      binaryArray1[i] = Integer.toBinaryString(array1[i]);
+      for (int j = binaryArray1[i].length() - 1; j < length - 1; j += 1) {
+        binaryArray1[i] = "0" + binaryArray1[i];
+      }
+
+      binaryArray2[i] = Integer.toBinaryString(array2[i]);
+      for (int j = binaryArray2[i].length() - 1; j < length - 1; j += 1) {
+        binaryArray2[i] = "0" + binaryArray2[i];
+      }
+    }
+
+    String[] answerArray = new String[length];
+    for (int i = 0; i < length; i += 1) {
+      answerArray[i] = "";
+
+      for (int j = 0; j < length; j += 1) {
+        if (binaryArray1[i].charAt(j) == '1' || binaryArray2[i].charAt(j) == '1') {
+          answerArray[i] += "#";
+          continue;
+        }
+
+        answerArray[i] += " ";
+      }
+    }
+
+    return answerArray;
   }
 }
