@@ -46,18 +46,3 @@ public class Remainder {
         .orElse(n - 1);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
