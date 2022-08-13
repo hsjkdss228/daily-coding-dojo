@@ -8,8 +8,8 @@ class RemainderTest {
   void solutionTest() {
     Remainder testApplication = new Remainder();
 
-    assertEquals(3, testApplication.solution(10));
-    assertEquals(11, testApplication.solution(12));
-    assertEquals(37, testApplication.solution(38));
+    assertEquals(3, testApplication.solution2(10));
+    assertEquals(11, testApplication.solution2(12));
+    assertEquals(37, testApplication.solution2(38));
   }
 }

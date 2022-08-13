@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Remainder {
+  public int solution(int n) {
 // n을 x로 나눈 나머지가 1인 가장 작은 자연수 찾기
 // n은 3~1000000 사이
 // x는 2부터 시작하는 임의의 자연수
@@ -15,10 +20,6 @@
 //           X X X X X  X  X  X  X      O
 //   - 더 좁혀서 범위는 3 이상 n/2 미만 << 중에 있으면 걔고, 없으면 n - 1
 
-import java.util.Arrays;
-
-public class Remainder {
-  public int solution(int n) {
     if (n % 2 == 1) {
       return 2;
     }
@@ -31,4 +32,32 @@ public class Remainder {
 
     return n - 1;
   }
+
+  public int solution2(int n) {
+    List<Integer> numbers = new ArrayList<>();
+
+    for (int i = 0; i < n; i += 1) {
+      numbers.add(i + 1);
+    }
+
+    return numbers.stream()
+        .filter(i -> n % i == 1)
+        .findFirst()
+        .orElse(n - 1);
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
