@@ -1,4 +1,5 @@
-package solutions;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DigitNumber {
   public int solution(int number) {
@@ -23,5 +24,18 @@ public class DigitNumber {
     }
 
     return result;
+  }
+
+  public int solution3(int number) {
+    List<Integer> digits = new ArrayList<>();
+
+    while (number >= 1) {
+      digits.add(number % 10);
+      number /= 10;
+    }
+
+    return digits.stream()
+        .mapToInt(i -> i)
+        .sum();
   }
 }
