@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class CaesarPassword {
   public String solution(String input, int index) {
     String answer = "";
@@ -26,5 +29,22 @@ public class CaesarPassword {
     }
 
     return answer;
+  }
+
+  public String solution2(String input, int index) {
+    int[] words = input.chars().map(word -> {
+      if (word == ' ') {
+        return ' ';
+      }
+      char modified = (char) (word + index);
+      return (word >= 'a' && word <= 'z' && modified <= 'z')
+          || (word >= 'A' && word <= 'Z' && modified <= 'Z')
+            ? modified
+            : modified - 26;
+    }).toArray();
+
+    return Arrays.stream(words)
+        .mapToObj(word -> Character.toString((char) word))
+        .collect(Collectors.joining());
   }
 }
