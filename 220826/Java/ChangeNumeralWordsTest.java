@@ -23,5 +23,18 @@ class ChangeNumeralWordsTest {
     if (word.startsWith("zero")) {
       System.out.println("four를 성공적으로 잘라냈다!!!");
     }
+
+    word = word.replace("two", "2");
+
+    System.out.println(word);
+  }
+
+  @Test
+  void test() {
+    ChangeNumeralWords test = new ChangeNumeralWords();
+
+    assertEquals(1478, test.solution("one4seveneight"));
+    assertEquals(234567, test.solution("23four5six7"));
+    assertEquals(123, test.solution("123"));
   }
 }

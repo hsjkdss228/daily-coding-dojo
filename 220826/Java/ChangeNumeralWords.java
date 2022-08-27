@@ -30,6 +30,23 @@
 // startsWith()로 어떤 단어로 시작하는지 찾을 수 있다!
 // 그럼 이제 5개의 단어가 들어간 문자를 주고 2개의 단어를 잘라내서 추출하는 과정을 만들어보자.
 
-public class ChangeNumeralWords {
+// ...
+// 과정은 나중에 만들어 보자.
+// replace() 메서드로 대체하도록 하자.
 
+public class ChangeNumeralWords {
+  public int solution(String numeralWords) {
+    numeralWords = numeralWords.replace("zero", "0");
+    numeralWords = numeralWords.replace("one", "1");
+    numeralWords = numeralWords.replace("two", "2");
+    numeralWords = numeralWords.replace("three", "3");
+    numeralWords = numeralWords.replace("four", "4");
+    numeralWords = numeralWords.replace("five", "5");
+    numeralWords = numeralWords.replace("six", "6");
+    numeralWords = numeralWords.replace("seven", "7");
+    numeralWords = numeralWords.replace("eight", "8");
+    numeralWords = numeralWords.replace("nine", "9");
+
+    return Integer.parseInt(numeralWords);
+  }
 }
