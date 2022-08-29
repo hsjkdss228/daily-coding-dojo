@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,5 +40,37 @@ public class NotFinishedParticipant {
     }
 
     return notFinishedParticipant;
+  }
+
+  public String solution2(String[] participants, String[] finishers) {
+    Map<String, List<String>> participantsMap = new HashMap<>();
+
+    Arrays.stream(participants)
+        .forEach(participant -> {
+          if (participantsMap.containsKey(participant)) {
+            participantsMap.get(participant).add(participant);
+            return;
+          }
+          List<String> finished = new ArrayList<>();
+          finished.add(participant);
+          participantsMap.put(participant, finished);
+        });
+
+    Arrays.stream(finishers)
+        .forEach(finisher -> {
+          List<String> finished = participantsMap.get(finisher);
+          finished.remove(finisher);
+          if (finished.isEmpty()) {
+            participantsMap.remove(finisher);
+          }
+        });
+
+    List<String> notFinisher = new ArrayList<>();
+
+    participantsMap.forEach((participant, finished) -> {
+      notFinisher.add(participant);
+    });
+
+    return notFinisher.get(0);
   }
 }
