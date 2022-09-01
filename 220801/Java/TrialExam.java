@@ -86,4 +86,68 @@ public class TrialExam {
         .mapToInt(i -> i)
         .toArray();
   }
+
+  // 1. 문제 개수만큼 수포자들의 답안을 만든다.
+  // 2. 수포자들의 답안 배열과 답지 배열을 처음부터 하나씩 비교한다.
+  //    각 수포자가 정답을 맞춘 개수를 일단 기록한다.
+  // 3. 최종적으로 정답을 맞춘 개수를 비교해 정답 배열을 만든다.
+
+  public int[] solution2(int[] answers) {
+    int[][] madeAnswers = makeAnswers(answers.length);
+
+    int[] correctAnswers = checkAnswers(madeAnswers, answers);
+
+    return rank(correctAnswers);
+  }
+
+  public int[][] makeAnswers(int numberOfAnswer) {
+    int[] answerRuleStudent1 = new int[]{1, 2, 3, 4, 5};
+    int[] answerRuleStudent2 = new int[]{2, 1, 2, 3, 2, 4, 2, 5};
+    int[] answerRuleStudent3 = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+
+    int[][] answers = new int[3][numberOfAnswer];
+
+    for (int i = 0; i < numberOfAnswer; i += 1) {
+      int answerRuleLengthStudent1 = answerRuleStudent1.length;
+      int answerRuleLengthStudent2 = answerRuleStudent2.length;
+      int answerRuleLengthStudent3 = answerRuleStudent3.length;
+
+      answers[0][i] = answerRuleStudent1[i % answerRuleLengthStudent1];
+      answers[1][i] = answerRuleStudent2[i % answerRuleLengthStudent2];
+      answers[2][i] = answerRuleStudent3[i % answerRuleLengthStudent3];
+    }
+
+    return answers;
+  }
+
+  public int[] checkAnswers(int[][] madeAnswers, int[] answers) {
+    int[] correctAnswers = new int[]{0, 0, 0};
+
+    for (int i = 0; i < madeAnswers.length; i += 1) {
+      for (int j = 0; j < madeAnswers[i].length; j += 1) {
+        if (madeAnswers[i][j] == answers[j]) {
+          correctAnswers[i] += 1;
+        }
+      }
+    }
+
+    return correctAnswers;
+  }
+
+  public int[] rank(int[] correctAnswers) {
+    List<Integer> ranking = new ArrayList<>();
+
+    int higher = Math.max(correctAnswers[0], correctAnswers[1]);
+    int highest = Math.max(higher, correctAnswers[2]);
+
+    for (int i = 0; i < correctAnswers.length; i += 1) {
+      if (correctAnswers[i] == highest) {
+        ranking.add(i + 1);
+      }
+    }
+
+    return ranking.stream()
+        .mapToInt(element -> element)
+        .toArray();
+  }
 }
