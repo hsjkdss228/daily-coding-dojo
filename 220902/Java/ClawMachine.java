@@ -24,9 +24,7 @@ public class ClawMachine {
 
         if (picked != 0) {
           pickedThings.add(picked);
-
           board[i][column - 1] = 0;
-
           break;
         }
       }
