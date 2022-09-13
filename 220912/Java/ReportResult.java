@@ -80,6 +80,7 @@ public class ReportResult {
       }
     }
 
+    // map의 values() 메서드에 대해 알아봐야 할 것 같다.
     return countsEmailToBeSent.values().stream()
         .collect(Collectors.toList())
         .stream().mapToInt(i -> i)
