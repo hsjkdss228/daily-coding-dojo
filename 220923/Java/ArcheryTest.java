@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 // 특이한 양궁 규칙;
@@ -40,9 +41,18 @@ import static org.junit.jupiter.api.Assertions.*;
 // 이 생성된 점수가 처음부터 Apeach보다 낮을 경우, [-1] return
 // 점수가 생성되었으면 가장 높은 점수 시작지점을 1 낮춰서 위의 과정을 반복 시도한다.
 // 생성된 점수가 이전보다 높으면 또 가장 높은 점수 시작지점을 1 낮춰서 반복 시도를 이어가고,
-// 생성된 점수가 이전보다 낮으면 그 생성된 점수 배열을 반환한다.
+// 생성된 점수가 이전보다 낮으면 바로 직전에 생성되었었던 가장 높은 점수 배열을 반환한다.
 
 class ArcheryTest {
   @Test
+  void checkNeededArrowCountToTakeOtherScore() {
+    Archery test = new Archery();
 
+    int arrowCountOtherHaveMatched = 2;
+
+    int arrowsNeed
+        = test.checkNeededArrow(arrowCountOtherHaveMatched);
+
+    assertThat(arrowsNeed).isEqualTo(3);
+  }
 }
