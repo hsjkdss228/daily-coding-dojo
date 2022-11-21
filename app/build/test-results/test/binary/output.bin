@@ -1,28 +1,0 @@
-	{jeju=0}
-{jeju=1, pangyo=0}
-{seoul=0, jeju=2, pangyo=1}
-'{seoul=1, newyork=0, jeju=3, pangyo=2}
-%{seoul=2, newyork=1, la=0, pangyo=3}
-#{seoul=3, newyork=2, la=1, jeju=0}
-${newyork=3, la=2, jeju=1, pangyo=0}
-"{seoul=0, la=3, jeju=2, pangyo=1}
-'{seoul=1, newyork=0, jeju=3, pangyo=2}
-%{seoul=2, newyork=1, la=0, pangyo=3}
-	{jeju=0}
-{jeju=1, pangyo=0}
-{seoul=0, jeju=2, pangyo=1}
-'{seoul=1, newyork=0, jeju=3, pangyo=2}
--{seoul=2, newyork=1, la=0, jeju=4, pangyo=3}
-={seoul=3, newyork=2, sanfrancisco=0, la=1, jeju=5, pangyo=4}
-={seoul=0, newyork=3, sanfrancisco=1, la=2, jeju=6, pangyo=5}
-={seoul=1, rome=0, newyork=4, sanfrancisco=2, la=3, pangyo=6}
-<{seoul=2, rome=1, newyork=5, sanfrancisco=3, paris=0, la=4}
-9{seoul=3, rome=2, sanfrancisco=4, paris=1, la=5, jeju=0}
->{seoul=4, rome=3, sanfrancisco=5, paris=2, newyork=0, jeju=1}
->{seoul=5, rome=0, sanfrancisco=6, paris=3, newyork=1, jeju=2}
-	{jeju=0}
-{pangyo=0}
-
-{seoul=0}
-{newyork=0}
-{la=0}
