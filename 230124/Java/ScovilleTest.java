@@ -15,19 +15,19 @@ class ScovilleTest {
             .isEqualTo(2);
     }
 
-    @Test
-    void sortScovillesChanged() {
-        Scoville test = new Scoville();
-
-        Stack<Integer> scovillesChanged = new Stack<>();
-        scovillesChanged.push(12);
-        scovillesChanged.push(10);
-        scovillesChanged.push(9);
-        scovillesChanged.push(3);
-        int newScoville = 5;
-        test.sortScovillesChanged(scovillesChanged, newScoville);
-        assertThat(scovillesChanged.pop()).isEqualTo(3);
-        assertThat(scovillesChanged.pop()).isEqualTo(5);
-        assertThat(scovillesChanged.pop()).isEqualTo(9);
-    }
+//    @Test
+//    void sortScovillesChanged() {
+//        Scoville test = new Scoville();
+//
+//        Stack<Integer> scovillesChanged = new Stack<>();
+//        scovillesChanged.push(12);
+//        scovillesChanged.push(10);
+//        scovillesChanged.push(9);
+//        scovillesChanged.push(3);
+//        int newScoville = 5;
+//        test.sortScovillesChanged(scovillesChanged, newScoville);
+//        assertThat(scovillesChanged.pop()).isEqualTo(3);
+//        assertThat(scovillesChanged.pop()).isEqualTo(5);
+//        assertThat(scovillesChanged.pop()).isEqualTo(9);
+//    }
 }

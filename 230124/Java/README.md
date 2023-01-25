@@ -1,7 +1,7 @@
 # 💡 How to solve it?
 > 문제를 풀기 전에 어떻게 풀 것인지 먼저 생각을 정리하고, 다 풀고 나서 회고한다.
 
-## 
+## 더 맵게
 
 > Heap
 
@@ -62,5 +62,38 @@
 - 정확성 15/21, 효율성 0/5 (시간 초과 실패)
 - long 문제는 아니다.
 - PriorityQueue에 대해 학습한 뒤, 다시 풀어보도록 하자.
-  - FIFO 방식의 Queue는 LinkedList를 이용해 구현하고,
-    PriorityQueue는 Java에서 Heap 자료구조를 구현한 구현체이다?
+  - PriorityQueue는 내가 알던 FIFO 방식의 그 Queue가 아닌 것 같다.
+    FIFO 방식의 Queue는 Java에서는 LinkedList를 이용해 구현하는 것이고,
+    PriorityQueue는 Java에서 Heap 자료구조를 구현한 구현체인 것이다?
+
+### 23.1.25
+
+#### 1. 이해
+
+- 배열이 정렬되어 있지 않을 수 있다.
+- 오름차순 PriorityQueue를 사용하면,
+  가장 덜 매운 scoville과 (PriorityQueue\<\>.remove())
+  두 번째로 덜 매운 scoville을 빠르게 구함과 동시에 바로 정렬할 수 있다.
+  ~~(Math.min(PriorityQueue\<\>[1], PriorityQueue\<\>[2]))~~
+  바로 이어서 PriorityQueue\<\>.remove()
+- 새로운 값은 그냥 add해도 내부에서 알아서 정렬된다.
+  (가장 마지막인 leaf node에 들어간 뒤, heap의 성질로 인해 바로 정렬된다.)
+
+#### 2. 계획
+
+- 기존의 로직에서 Stack을 이용하는 방식을 PriorityQueue를 이용하는 방식으로 리팩터링한다.
+
+#### 3. 실행
+
+- 문제 계획 시간: 15:20-15:50 (Heap, PriorityQueue 학습), 17:00-17:05 (계획)
+- 문제 풀이 시간: 17:05-17:15
+
+#### 4. 반성
+
+- PriorityQueue<>()에 속성을 주지 않을 경우 오름차순으로 우선순위 형성
+  (작은 숫자일수록 Tree의 depth에 맞춰 낮은 index에 위치)
+- Collections.reverseOrder()를 속성으로 줄 경우 내림차순으로 우선순위 형성 (큰 숫자일수록 낮은 index)
+- Tree의 root의 바로 자식들끼리는 우선순위를 따지지 않아도 되는지 고민이었는데, 굳이 따지지 않아도 풀렸다.
+- 블로그에 Heap과 PriorityQueue에 대해 정리할 것...
+- Heap: https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html
+- PriorityQueue: https://crazykim2.tistory.com/575

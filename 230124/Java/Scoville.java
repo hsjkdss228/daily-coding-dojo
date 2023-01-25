@@ -1,12 +1,13 @@
-import java.util.Stack;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Scoville {
     public int solution(int[] scovilles, int target) {
-        Stack<Integer> scovillesChanged = new Stack<>();
+        Queue<Integer> scovillesChanged = new PriorityQueue<>();
         int count = 0;
 
-        for (int i = scovilles.length - 1; i >= 0; i -= 1) {
-            scovillesChanged.push(scovilles[i]);
+        for (int scoville : scovilles) {
+            scovillesChanged.add(scoville);
         }
 
         while (scovillesChanged.peek() < target) {
@@ -14,30 +15,13 @@ public class Scoville {
                 return -1;
             }
 
-            int smallest = scovillesChanged.pop();
-            int secondSmallest = scovillesChanged.pop();
-
+            int smallest = scovillesChanged.remove();
+            int secondSmallest = scovillesChanged.remove();
             int newScoville = smallest + (secondSmallest * 2);
-
-            sortScovillesChanged(scovillesChanged, newScoville);
-
+            scovillesChanged.add(newScoville);
             count += 1;
         }
 
         return count;
-    }
-
-    public void sortScovillesChanged(Stack<Integer> scovillesChanged,
-                                     int newScoville
-    ) {
-        Stack<Integer> tempForSort = new Stack<>();
-        while (!scovillesChanged.isEmpty()
-            && scovillesChanged.peek() < newScoville) {
-            tempForSort.push(scovillesChanged.pop());
-        }
-        scovillesChanged.push(newScoville);
-        while (!tempForSort.isEmpty()) {
-            scovillesChanged.push(tempForSort.pop());
-        }
     }
 }
