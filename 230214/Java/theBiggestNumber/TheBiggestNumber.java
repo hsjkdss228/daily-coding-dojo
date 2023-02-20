@@ -6,21 +6,7 @@ public class TheBiggestNumber {
             .mapToObj(Integer::toString)
             .toArray(String[]::new);
 
-        for (int i = 0; i < numbers.length - 1; i += 1) {
-            for (int j = i + 1; j < numbers.length; j += 1) {
-                String previous = String.valueOf(numbers[i]);
-                String next = String.valueOf(numbers[j]);
-
-                int shorterLength
-                    = Math.min(previous.length(), next.length());
-                String bigger = compare(previous, next, shorterLength);
-                String smaller = previous.equals(bigger)
-                    ? next
-                    : previous;
-                numbers[i] = bigger;
-                numbers[j] = smaller;
-            }
-        }
+        bubbleSort(numbers);
 
         if (isAllZero(numbers)) {
             return "0";
@@ -29,7 +15,40 @@ public class TheBiggestNumber {
         return join(numbers);
     }
 
+    public void bubbleSort(String[] numbers) {
+        for (int i = 0; i < numbers.length - 1; i += 1) {
+            for (int j = i + 1; j < numbers.length; j += 1) {
+                int previousIndex = i;
+                int nextIndex = j;
+                compareAndSwitch(numbers, previousIndex, nextIndex);
+            }
+        }
+    }
+
+    public void quickSort(String[] numbers) {
+//        int pivotIndex = 0;
+//        int leftIndex = 0;
+//        int rightIndex = numbers.length - 1;
+
+    }
+
+    public void compareAndSwitch(String[] numbers, int previousIndex, int nextIndex) {
+        String previous = String.valueOf(numbers[previousIndex]);
+        String next = String.valueOf(numbers[nextIndex]);
+
+        int shorterLength
+            = Math.min(previous.length(), next.length());
+        String bigger = compare(previous, next, shorterLength);
+        String smaller = previous.equals(bigger) ? next : previous;
+        numbers[previousIndex] = bigger;
+        numbers[nextIndex] = smaller;
+    }
+
     public String compare(String previous, String next, int shorterLength) {
+        return Integer.parseInt(previous + next) < Integer.parseInt(next + previous)
+            ? next
+            : previous;
+
 //        for (int i = 0; i < shorterLength; i += 1) {
 //            int previousDigit = Character.getNumericValue(previous.charAt(i));
 //            int nextDigit = Character.getNumericValue(next.charAt(i));
@@ -59,22 +78,19 @@ public class TheBiggestNumber {
 //        }
 //
 //        return previous;
-        return Integer.parseInt(previous + next) < Integer.parseInt(next + previous)
-            ? next
-            : previous;
     }
 
-    public boolean LongerNumberIsBigger(String longer) {
-        int firstDigit = Character.getNumericValue(longer.charAt(0));
-        for (int i = 1; i < longer.length(); i += 1) {
-            int digit = Character.getNumericValue(longer.charAt(i));
-            if (firstDigit == digit) {
-                continue;
-            }
-            return firstDigit < digit;
-        }
-        return false;
-    }
+//    public boolean LongerNumberIsBigger(String longer) {
+//        int firstDigit = Character.getNumericValue(longer.charAt(0));
+//        for (int i = 1; i < longer.length(); i += 1) {
+//            int digit = Character.getNumericValue(longer.charAt(i));
+//            if (firstDigit == digit) {
+//                continue;
+//            }
+//            return firstDigit < digit;
+//        }
+//        return false;
+//    }
 
     public boolean isAllZero(String[] numbers) {
         boolean isAllZero = true;
