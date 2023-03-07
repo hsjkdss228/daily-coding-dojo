@@ -42,7 +42,7 @@ class TrioTest {
     }
 
     @Test
-    void createTrioIndices() {
+    void createIndicesSet() {
         int length = 4;
         assertThat(test.createIndicesSet(length))
             .isEqualTo(Set.of(
