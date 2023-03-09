@@ -60,5 +60,13 @@ typings/
 # next.js build output
 .next
 
+app/
+gradle/
+.gradle/
+.idea/
+gradlew
+gradlew.bat
+settings.gradle
+
 230106/test/
 230127/questions/
