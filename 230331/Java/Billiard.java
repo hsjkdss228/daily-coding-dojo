@@ -41,11 +41,11 @@ public class Billiard {
             if (notToBeFlipped(startX, startY, endX, endY, standardAxis)) {
                 return;
             }
-            int[] flippedEndPoint = flip(
+            int[] flippedBallPosition = flip(
                 height, width, endX, endY, standardAxis
             );
-            int flippedEndX = flippedEndPoint[0];
-            int flippedEndY = flippedEndPoint[1];
+            int flippedEndX = flippedBallPosition[0];
+            int flippedEndY = flippedBallPosition[1];
             int distance = calculateDistance(
                 startX, startY, flippedEndX, flippedEndY
             );
@@ -61,17 +61,6 @@ public class Billiard {
             || (standardAxis.equals(StandardAxis.BOTTOM) && (startX == endX && startY > endY))
             || (standardAxis.equals(StandardAxis.LEFT) && (startY == endY && startX > endX))
             || (standardAxis.equals(StandardAxis.RIGHT) && (startY == endY && startX < endX));
-    }
-
-    public int findMinimumDistance(Map<StandardAxis, Integer> axisAndDistances) {
-        return axisAndDistances.entrySet().stream()
-            .reduce((previous, next) -> {
-                int previousDistance = previous.getValue();
-                int nextDistance = next.getValue();
-                return previousDistance < nextDistance ? previous : next;
-            })
-            .get()
-            .getValue();
     }
 
     public int[] flip(int height, int width,
@@ -90,5 +79,16 @@ public class Billiard {
         return (int) (
             Math.pow(startX - flippedEndX, 2) + Math.pow(startY - flippedEndY, 2)
         );
+    }
+
+    public int findMinimumDistance(Map<StandardAxis, Integer> axisAndDistances) {
+        return axisAndDistances.entrySet().stream()
+            .reduce((previous, next) -> {
+                int previousDistance = previous.getValue();
+                int nextDistance = next.getValue();
+                return previousDistance < nextDistance ? previous : next;
+            })
+            .get()
+            .getValue();
     }
 }
