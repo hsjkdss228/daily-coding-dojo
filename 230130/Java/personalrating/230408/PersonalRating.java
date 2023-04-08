@@ -73,14 +73,13 @@ public class PersonalRating {
 //        List<Score> scores = createSortedScores(rawScores, myScore);
         excludeIfConditionNotMet(scores);
 
-        int myIndex = scores.indexOf(myScore);
-        if (excluded(myIndex)) {
+        if (excluded(scores, myScore)) {
             return -1;
         }
-        if (noDuplicateRatings(scores, myIndex, myScore)) {
-            return myIndex + 1;
+        if (noDuplicateRatings(scores, myScore)) {
+            return scores.indexOf(myScore) + 1;
         }
-        return calculateDuplicateRatings(scores, myIndex, myScore);
+        return calculateDuplicateRatings(scores, myScore);
     }
 
     public Score getMyScore(int[] myScore) {
@@ -92,7 +91,7 @@ public class PersonalRating {
     public List<Score> createScores(int[][] rawScores, Score myScore) {
         // 완호보다 점수가 높은 사원만 List에 넣는 로직
         List<Score> scores = new ArrayList<>();
-        addScores(scores, rawScores, myScore);
+        addScoresExceptLowerThanMyScore(scores, rawScores, myScore);
         return scores;
 
         // 모든 사원의 점수를 List에 넣는 로직
@@ -112,11 +111,13 @@ public class PersonalRating {
             = (previous, next) -> next.sum() - previous.sum();
         Queue<Score> sortedScores = new PriorityQueue<>(comparator);
 
-        addScores(sortedScores, rawScores, myScore);
+        addScoresExceptLowerThanMyScore(sortedScores, rawScores, myScore);
         return new ArrayList<>(sortedScores);
     }
 
-    public void addScores(Collection<Score> scores, int[][] rawScores, Score myScore) {
+    public void addScoresExceptLowerThanMyScore(Collection<Score> scores,
+                                                int[][] rawScores,
+                                                Score myScore) {
         scores.add(myScore);
         IntStream.range(1, rawScores.length)
             .forEach(index -> {
@@ -146,17 +147,16 @@ public class PersonalRating {
         }
     }
 
-    public boolean excluded(int myRating) {
-        return myRating == -1;
+    public boolean excluded(List<Score> scores, Score myScore) {
+        return !scores.contains(myScore);
     }
 
-    public boolean noDuplicateRatings(List<Score> scores,
-                                      int myIndex,
-                                      Score myScore) {
+    public boolean noDuplicateRatings(List<Score> scores, Score myScore) {
         if (scores.size() == 1) {
             return true;
         }
 
+        int myIndex = scores.indexOf(myScore);
         Score next = myIndex == scores.size() - 1
             ? null
             : scores.get(myIndex + 1);
@@ -174,9 +174,9 @@ public class PersonalRating {
             && myScore.hasSmallerSumThan(previous);
     }
 
-    public int calculateDuplicateRatings(List<Score> scores,
-                                         int myIndex,
-                                         Score myScore) {
+    public int calculateDuplicateRatings(List<Score> scores, Score myScore) {
+        int myIndex = scores.indexOf(myScore);
+
         if (myIndex == 0) {
             return myIndex + 1;
         }

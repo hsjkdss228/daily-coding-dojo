@@ -14,24 +14,24 @@ class PersonalRatingTest {
         test = new PersonalRating();
     }
 
-//    @Test
-//    void createScores() {
-//        PersonalRating.Score myScore = PersonalRating.Score.of(2, 2);
-//        int[][] rawScores = {
-//            {2, 2},
-//            {1, 4},
-//            {3, 2},
-//            {3, 2},
-//            {2, 1},
-//        };
-//        List<PersonalRating.Score> scores = List.of(
-//            PersonalRating.Score.of(2, 2),
-//            PersonalRating.Score.of(1, 4),
-//            PersonalRating.Score.of(3, 2),
-//            PersonalRating.Score.of(3, 2)
-//        );
-//        assertThat(test.createScores(rawScores, myScore)).isEqualTo(scores);
-//    }
+    @Test
+    void createScores() {
+        PersonalRating.Score myScore = PersonalRating.Score.of(2, 2);
+        int[][] rawScores = {
+            {2, 2},
+            {1, 4},
+            {3, 2},
+            {3, 2},
+            {2, 1},
+        };
+        List<PersonalRating.Score> scores = List.of(
+            PersonalRating.Score.of(2, 2),
+            PersonalRating.Score.of(1, 4),
+            PersonalRating.Score.of(3, 2),
+            PersonalRating.Score.of(3, 2)
+        );
+        assertThat(test.createScores(rawScores, myScore)).isEqualTo(scores);
+    }
 
     @Test
     void sortScores() {
@@ -79,8 +79,7 @@ class PersonalRatingTest {
             PersonalRating.Score.of(2, 2)
         );
         PersonalRating.Score myScore = scores.get(0);
-        int myIndex = scores.indexOf(myScore);
-        assertThat(test.noDuplicateRatings(scores, myIndex, myScore)).isTrue();
+        assertThat(test.noDuplicateRatings(scores, myScore)).isTrue();
     }
 
     @Test
@@ -92,8 +91,7 @@ class PersonalRatingTest {
             PersonalRating.Score.of(2, 2)
         );
         PersonalRating.Score myScore = scores.get(3);
-        int myIndex = scores.indexOf(myScore);
-        assertThat(test.noDuplicateRatings(scores, myIndex, myScore)).isTrue();
+        assertThat(test.noDuplicateRatings(scores, myScore)).isTrue();
     }
 
     @Test
@@ -105,8 +103,7 @@ class PersonalRatingTest {
             PersonalRating.Score.of(2, 2)
         );
         PersonalRating.Score myScore = scores.get(2);
-        int myIndex = scores.indexOf(myScore);
-        assertThat(test.calculateDuplicateRatings(scores, myIndex, myScore))
+        assertThat(test.calculateDuplicateRatings(scores, myScore))
             .isEqualTo(2);
     }
 
