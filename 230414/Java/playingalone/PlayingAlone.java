@@ -43,6 +43,16 @@ public class PlayingAlone {
         }
     }
 
+    private int calculateAnswer(List<Integer> boxesCounts) {
+        if (hasOneCount(boxesCounts)) {
+            return 0;
+        }
+        List<Integer> top2BoxesCounts = countTopTwoBoxesCounts(boxesCounts);
+        int first = top2BoxesCounts.get(0);
+        int second = top2BoxesCounts.get(1);
+        return first * second;
+    }
+
     private boolean hasOneCount(List<Integer> boxesCounts) {
         return boxesCounts.size() == 1;
     }
@@ -53,15 +63,5 @@ public class PlayingAlone {
             .sorted(Comparator.reverseOrder())
             .limit(2)
             .collect(Collectors.toList());
-    }
-
-    private int calculateAnswer(List<Integer> boxesCounts) {
-        if (hasOneCount(boxesCounts)) {
-            return 0;
-        }
-        List<Integer> top2BoxesCounts = countTopTwoBoxesCounts(boxesCounts);
-        int first = top2BoxesCounts.get(0);
-        int second = top2BoxesCounts.get(1);
-        return first * second;
     }
 }
