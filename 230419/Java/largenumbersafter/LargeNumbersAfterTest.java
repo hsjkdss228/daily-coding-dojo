@@ -3,12 +3,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class BigNumbersAfterTest {
-    private BigNumbersAfter test;
+class LargeNumbersAfterTest {
+    private LargeNumbersAfter test;
 
     @BeforeEach
     void setUp() {
-        test = new BigNumbersAfter();
+        test = new LargeNumbersAfter();
     }
 
     @Test
@@ -64,6 +64,13 @@ class BigNumbersAfterTest {
     void solution8() {
         int[] numbers = {8, 1, 2, 9};
         int[] result = {9, 2, 9, -1};
+        assertThat(test.solution(numbers)).isEqualTo(result);
+    }
+
+    @Test
+    void solution9() {
+        int[] numbers = { 2, 40,  1, 25, 16,  8,  1,  6, 20,  1, 12, 30,  1};
+        int[] result =  {40, -1, 25, 30, 20, 20,  6, 20, 30, 12, 30, -1, -1};
         assertThat(test.solution(numbers)).isEqualTo(result);
     }
 }

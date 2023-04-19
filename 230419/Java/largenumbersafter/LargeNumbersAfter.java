@@ -1,4 +1,4 @@
-public class BigNumbersAfter {
+public class LargeNumbersAfter {
     public int[] solution(int[] numbers) {
         int[] largesAfter = new int[numbers.length];
         largesAfter[largesAfter.length - 1] = -1;
