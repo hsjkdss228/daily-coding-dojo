@@ -1,54 +1,35 @@
+import java.util.Stack;
+
 public class LargeNumbersAfter {
     public int[] solution(int[] numbers) {
-        int[] largesAfter = new int[numbers.length];
-        largesAfter[largesAfter.length - 1] = -1;
-        int currentLargest = largesAfter[largesAfter.length - 1];
+        Stack<Integer> uncheckedIndices = new Stack<>();
+        int[] answer = new int[numbers.length];
 
-        for (int index = largesAfter.length - 2; index >= 0; index -= 1) {
+        for (int index = 0; index < numbers.length; index += 1) {
+            if (uncheckedIndices.isEmpty()) {
+                uncheckedIndices.push(index);
+                continue;
+            }
+
             int current = numbers[index];
-            int nextIndex = index + 1;
-            int next = numbers[nextIndex];
-            int largeNext = largesAfter[nextIndex];
+            while (!uncheckedIndices.isEmpty()
+                && isLargerThan(current, numbers[uncheckedIndices.peek()])) {
+                int uncheckedIndex = uncheckedIndices.pop();
+                answer[uncheckedIndex] = current;
+            }
 
-            int large = putLargeAfter(
-                largesAfter,
-                index, current, next, largeNext,
-                currentLargest
-            );
-            currentLargest = Math.max(large, currentLargest);
+            uncheckedIndices.push(index);
         }
 
-        return largesAfter;
+        while (!uncheckedIndices.isEmpty()) {
+            int uncheckedIndex = uncheckedIndices.pop();
+            answer[uncheckedIndex] = -1;
+        }
+
+        return answer;
     }
 
-    private int putLargeAfter(int[] largesAfter,
-                              int currentIndex, int current,
-                              int next, int largeNext,
-                              int currentLargest) {
-        if (current < next) {
-            largesAfter[currentIndex] = next;
-            return largesAfter[currentIndex];
-        }
-
-        // if (current >= next) &&
-        if (largeNext == -1) {
-            largesAfter[currentIndex] = -1;
-            return largesAfter[currentIndex];
-        }
-
-        // if (current >= next && largeNext != 1) &&
-        if (current < largeNext) {
-            largesAfter[currentIndex] = largeNext;
-            return largesAfter[currentIndex];
-        }
-
-        // if (current >= next && largeNext != 1 && current >= largeNext)
-        if (current < currentLargest) {
-            largesAfter[currentIndex] = currentLargest;
-            return largesAfter[currentIndex];
-        }
-
-        largesAfter[currentIndex] = -1;
-        return largesAfter[currentIndex];
+    private boolean isLargerThan(int current, int unchecked) {
+        return current > unchecked;
     }
 }
