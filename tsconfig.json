@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noImplicitAny": false,
+    "types": [
+      "@types/node",
+      "@types/jest",
+    ]
+  },
+}

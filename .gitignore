@@ -68,6 +68,8 @@ gradlew
 gradlew.bat
 settings.gradle
 
+package-lock.json
+
 230106/test/
 230127/questions/
 230316/gabia/
