@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "target": "esnext",
     "allowJs": true,
     "checkJs": true,
-    "noImplicitAny": false,
+    "strict": true,
     "types": [
       "@types/node",
       "@types/jest",
