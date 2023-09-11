@@ -7,6 +7,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'airbnb-base',
+    'airbnb-typescript/base'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -40,6 +41,5 @@ module.exports = {
     'object-curly-spacing': ['error', 'always'],
     'key-spacing': ['error', { mode: 'strict' }],
     'arrow-spacing': ['error', { before: true, after: true }],
-    'import/no-extraneous-dependencies': 'off',
   },
 };
