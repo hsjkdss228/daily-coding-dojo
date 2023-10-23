@@ -60,15 +60,23 @@ typings/
 # next.js build output
 .next
 
-app/
-gradle/
-.gradle/
-.idea/
-gradlew
-gradlew.bat
-settings.gradle
+.vscode
 
-package-lock.json
+/app/
+/gradle/
+/.gradle/
+/.idea/
+/gradlew
+/gradlew.bat
+/settings.gradle
+
+/.eslintrc.js
+/.gitattributes
+/jest.config.*s
+/package.json
+/package-lock.json
+/test.test.ts
+/tsconfig.json
 
 solutions/Previous/230106/test/
 solutions/Previous/230127/questions/
