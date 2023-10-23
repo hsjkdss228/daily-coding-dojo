@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    "types": [
+      "@types/node",
+      "@types/jest",
+    ]
+  },
+}
